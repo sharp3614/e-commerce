@@ -3,7 +3,7 @@ import Sidebar from "../Sidebar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="h-screen w-screen flex p-4">
+    <div className="h-screen w-screen flex p-4 overflow-hidden">
       <div className="flex items-center">
         <Sidebar />
       </div>

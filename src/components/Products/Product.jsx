@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 const Product = ({ product }) => {
   return (
-    <div
+    <Link
+      to={`products/${product.id}`}
       className="border flex flex-col justify-between self-stretch rounded-lg w-full hover:shadow-lg"
     >
       <div className="bg-white rounded-lg  p-4">
@@ -24,7 +26,7 @@ const Product = ({ product }) => {
           <MdOutlineAddShoppingCart size={24} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

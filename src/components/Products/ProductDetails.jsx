@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
-import Layout from "../Layout";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,7 +14,7 @@ const ProductDetails = () => {
   }, []);
 
   return (
-    <Layout>
+    <>
       {product ? (
         <div className="w-full h-full flex flex-col px-16 gap-4 pt-8">
           <div className="flex  gap-4">
@@ -73,7 +72,7 @@ const ProductDetails = () => {
       ) : (
         <h1>Loading...</h1>
       )}
-    </Layout>
+    </>
   );
 };
 

@@ -26,20 +26,14 @@ const Products = () => {
   return (
     <>
       <div className="w-1/2 mx-auto pb-4">
-        <input
-          type="search"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="w-full px-2 py-4 outline-none shadow-lg rounded-lg border"
-          placeholder="Macbook, Phone, Clothes"
-        />
+        
       </div>
       {products == 0 ? (
         <h1 className="w-screen text-center">
           Aradığınız ürün stoklarımızda mevcut değildir...
         </h1>
       ) : (
-        <div className="w-full h-[85%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0 overflow-y-auto">
+        <div className="w-full h-[85%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0">
           {products.map((product) => (
             <Product key={product.id} product={product} />
           ))}

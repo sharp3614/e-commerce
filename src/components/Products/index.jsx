@@ -1,45 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Product from "./Product";
+import useSWR from "swr";
+import { useSearch } from "../../hooks/use-search";
+import { useSearchParams } from "react-router-dom";
+const fetcher = async (...args) =>
+  await fetch(...args).then((response) => response.json());
 
 const Products = () => {
-  const [products, setProducts] = useState();
-  const [input, setInput] = useState("");
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) =>
-        setProducts(
-          json.filter((item) => {
-            return Object.keys(item).some((key) =>
-              item[key].toString().toLowerCase().includes(input)
-            );
-          })
-        )
-      );
-    console.log(products);
-  }, [input]);
-
-  if (!products) {
-    return <h1>Loading...</h1>;
-  }
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_BASE_URL}/products`,
+    fetcher
+  );
+  const { query } = useSearch();
+  const filteredProducts =
+    data &&
+    data.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()));
+  if (error) return <h1>{error}</h1>;
   return (
-    <>
-      <div className="w-1/2 mx-auto pb-4">
-        
-      </div>
-      {products == 0 ? (
+    <main className="p-4">
+      {data == 0 ? (
         <h1 className="w-screen text-center">
           Aradığınız ürün stoklarımızda mevcut değildir...
         </h1>
+      ) : isLoading ? (
+        <div>Loading</div>
       ) : (
         <div className="w-full h-[85%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}
         </div>
       )}
-    </>
+    </main>
   );
 };
 

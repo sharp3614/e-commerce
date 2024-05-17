@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    dispatch(addToCart(product));
+  };
   return (
     <Link
       to={`products/${product.id}`}
@@ -22,9 +29,12 @@ const Product = ({ product }) => {
       </div>
       <div className="flex w-full items-center justify-between px-4 pb-4">
         <span className="text-xl py-2">${product?.price}</span>
-        <div className=" border shadow-lg rounded-lg p-2 hover:bg-gray-400 hover:text-white cursor-pointer">
+        <button
+          onClick={handleAddToCart}
+          className="border shadow-lg rounded-lg p-2 hover:bg-gray-400 hover:text-white cursor-pointer"
+        >
           <MdOutlineAddShoppingCart size={24} />
-        </div>
+        </button>
       </div>
     </Link>
   );

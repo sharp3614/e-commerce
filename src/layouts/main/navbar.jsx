@@ -7,7 +7,7 @@ import Search from "../../components/search";
 const menu = [
   { title: "Giriş Yap", pathname: "/", icon: CiUser },
   { title: "Favorilerim", pathname: "/", icon: MdFavoriteBorder },
-  { title: "Sepetim", pathname: "/", icon: CiShoppingCart },
+  { title: "Sepetim", pathname: "/cart", icon: CiShoppingCart },
 ];
 
 const Navbar = () => {

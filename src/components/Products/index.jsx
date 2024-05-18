@@ -2,7 +2,6 @@ import React from "react";
 import Product from "./Product";
 import useSWR from "swr";
 import { useSearch } from "../../hooks/use-search";
-import { useSearchParams } from "react-router-dom";
 const fetcher = async (...args) =>
   await fetch(...args).then((response) => response.json());
 
@@ -25,7 +24,7 @@ const Products = () => {
       ) : isLoading ? (
         <div>Loading</div>
       ) : (
-        <div className="w-full h-[85%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0">
+        <div className="w-full h-[85%] grid md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0">
           {filteredProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}

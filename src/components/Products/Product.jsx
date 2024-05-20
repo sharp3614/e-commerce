@@ -12,7 +12,7 @@ const Product = ({product}) => {
     return (
         <Link
             to={`products/${product.id}`}
-            className="relative border flex flex-col justify-between self-stretch rounded-lg w-full p-4"
+            className="relative border flex flex-col justify-between self-stretch rounded-lg p-4"
         >
             <div className="absolute right-2 top-2">
                 <button className="size-6 bg-white"><AiOutlineHeart className="w-full h-full"/></button>

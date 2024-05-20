@@ -16,15 +16,15 @@ const Products = () => {
     data.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()));
   if (error) return <h1>{error}</h1>;
   return (
-    <main className="p-4">
-      {data == 0 ? (
+    <main className="">
+      {data === 0 ? (
         <h1 className="w-screen text-center">
           Aradığınız ürün stoklarımızda mevcut değildir...
         </h1>
       ) : isLoading ? (
         <div>Loading</div>
       ) : (
-        <div className="w-full h-[85%] grid md:grid-cols-3 lg:grid-cols-5 gap-4 px-8 pb-40 pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {filteredProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}

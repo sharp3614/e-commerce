@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./navbar";
 
@@ -6,7 +5,7 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <main className="w-[1450px] mx-auto flex">
+      <main className="p-4">
         <Outlet />
       </main>
     </>
